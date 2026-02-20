@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "author": "George Orwell",
+        "name": "1984",
+        "year": 1949
+    },
+    {
+        "id": 2,
+        "author": "J.K. Rowling",
+        "name": "Harry Potter and the Philosopher's Stone",
+        "year": 1997
+    },
+    {
+        "id": 3,
+        "author": "Harper Lee",
+        "name": "To Kill a Mockingbird",
+        "year": 1960
+    }
+]

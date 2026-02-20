@@ -1,0 +1,6 @@
+langchain-openai
+langchain-core
+langchain
+langgraph
+fastapi
+uvicorn
