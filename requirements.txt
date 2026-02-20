@@ -1,6 +1,9 @@
 langchain-openai
 langchain-core
 langchain
+langchain-experimental
+langchain-classic
 langgraph
 fastapi
 uvicorn
+requests

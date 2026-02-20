@@ -52,6 +52,20 @@ def get_book_by_name(name: str = Query(..., description="Name of the book")):
             return book
     raise HTTPException(status_code=404, detail="Book not found")
 
+@app.get("/books/search", response_model=list[Book])
+def search_books(author: str = Query(None, description="Author of the book"), name: str = Query(None, description="Name of the book")):
+    filtered = books
+    if author:
+        filtered = [b for b in filtered if author.lower() in b['author'].lower()]
+    if name:
+        filtered = [b for b in filtered if name.lower() in b['name'].lower()]
+    return filtered
+
+@app.get("/books/author/{author}", response_model=list[Book])
+def get_books_by_author(author: str):
+    filtered = [b for b in books if author.lower() in b['author'].lower()]
+    return filtered
+
 @app.put("/books/{book_id}", response_model=Book)
 def update_book(book_id: int, updated_book: BookCreate):
     for i, book in enumerate(books):
