@@ -74,4 +74,35 @@ uv run python -c "from langchain_openai import ChatOpenAI; llm = ChatOpenAI(mode
 uv run python agent.py
 ```
 
-The agent can search for books by name, author, or ID, and create new books.
+The agent will prompt you to enter a query (e.g., "Search for books by author Orwell"). It can search for books by name, author, or ID, and create new books.
+
+### Interacting with the Agent
+- When prompted "Enter your query:", type your question or command.
+Sample requests:
+  - "Do you have books by Rowling?"
+  - "Search for books by author Stephen King" (no results should be found)
+  - "Do you have 'To Kill a Mockingbird'?"
+  - "Create a book with author 'Test Author', name 'New Book', year 2023"
+  - "Get the book named '1984'"
+  - 
+- The agent will process the query, use the appropriate tools to interact with the book API, and provide a response.
+- To exit, use Ctrl+C.
+
+### Response Format
+
+The agent's response is structured as follows:
+
+- **Status**: "success" or "error" (indicates if the operation succeeded or encountered issues).
+- **Action**: A description of the action taken, e.g., "Called search_books_by_author with {'author': 'Rowling'}".
+- **Data**: The final result or summary, e.g., "Yes, we have books by J.K. Rowling available."
+- **Detailed output**: A breakdown of the agent's reasoning, including:
+  - Thoughts: Step-by-step reasoning (each on a new line).
+  - Actions: Tools called and their inputs.
+  - Observations: Results from tool executions.
+- **Errors**: Any errors encountered during the process (only shown if applicable).
+
+### LLM used:
+LM Studio
+Model: "deepseek/deepseek-r1-0528-qwen3-8b"
+Url = "http://localhost:1234/v1"
+Api key = "dummy"

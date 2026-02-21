@@ -16,5 +16,11 @@
         "author": "Harper Lee",
         "name": "To Kill a Mockingbird",
         "year": 1960
+    },
+    {
+        "id": 4,
+        "author": "J.K. Rowling",
+        "name": "Harry Potter and the Chamber of Secrets",
+        "year": 1998
     }
 ]
