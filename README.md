@@ -84,7 +84,6 @@ Sample requests:
   - "Do you have 'To Kill a Mockingbird'?"
   - "Create a book with author 'Test Author', name 'New Book', year 2023"
   - "Get the book named '1984'"
-  - 
 - The agent will process the query, use the appropriate tools to interact with the book API, and provide a response.
 - To exit, use Ctrl+C.
 
