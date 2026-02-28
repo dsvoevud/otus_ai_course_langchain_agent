@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# MCP server runtime logs
+mcp/mcp_server.log
+
 # C extensions
 *.so
 

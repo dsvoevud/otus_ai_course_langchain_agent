@@ -38,6 +38,19 @@ def create_book(book: BookCreate):
     save_books(books)
     return new_book
 
+@app.get("/books/all", response_model=list[Book])
+def get_all_books():
+    return books
+
+@app.get("/books/search", response_model=list[Book])
+def search_books(author: str = Query(None, description="Author of the book"), name: str = Query(None, description="Name of the book")):
+    filtered = books
+    if author:
+        filtered = [b for b in filtered if author.lower() in b['author'].lower()]
+    if name:
+        filtered = [b for b in filtered if name.lower() in b['name'].lower()]
+    return filtered
+
 @app.get("/books/{book_id}", response_model=Book)
 def get_book_by_id(book_id: int):
     for book in books:
@@ -51,15 +64,6 @@ def get_book_by_name(name: str = Query(..., description="Name of the book")):
         if book["name"].lower() == name.lower():
             return book
     raise HTTPException(status_code=404, detail="Book not found")
-
-@app.get("/books/search", response_model=list[Book])
-def search_books(author: str = Query(None, description="Author of the book"), name: str = Query(None, description="Name of the book")):
-    filtered = books
-    if author:
-        filtered = [b for b in filtered if author.lower() in b['author'].lower()]
-    if name:
-        filtered = [b for b in filtered if name.lower() in b['name'].lower()]
-    return filtered
 
 @app.get("/books/author/{author}", response_model=list[Book])
 def get_books_by_author(author: str):
